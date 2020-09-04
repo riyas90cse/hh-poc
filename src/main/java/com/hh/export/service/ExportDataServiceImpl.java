@@ -23,9 +23,11 @@ import static java.lang.String.format;
 public class ExportDataServiceImpl implements ExportDataService {
 
     private final Logger LOG = LogManager.getLogger(this.getClass());
+    private final ReportRepository reportRepository;
 
-    @Autowired
-    private ReportRepository reportRepository;
+    public ExportDataServiceImpl(@Autowired ReportRepository reportRepository) {
+        this.reportRepository = reportRepository;
+    }
 
     @Override
     public MDFReport addReportData(final MDFReport MDFReport) {

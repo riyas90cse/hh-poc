@@ -10,9 +10,7 @@ public class HHExportException extends Exception {
      */
     private static final long serialVersionUID = 345456L;
 
-    public HHExportException() {
-
-    }
+    public HHExportException() {}
 
     public HHExportException(String message) {
         super(message);

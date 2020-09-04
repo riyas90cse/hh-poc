@@ -30,12 +30,15 @@ public class ExportController {
     private static final String LANDING_PAGE = "landing/landing";
     private static final String EXPORT_PAGE = "list/export";
     private static final String LIST_PAGE = "list/list";
+    private final ExportDataService exportDataService;
+    private final ExportDataMapper exportDataMapper;
 
-    @Autowired
-    private ExportDataService exportDataService;
-
-    @Autowired
-    private ExportDataMapper exportDataMapper;
+    public ExportController(
+            @Autowired ExportDataService exportDataService,
+            @Autowired ExportDataMapper exportDataMapper) {
+        this.exportDataService = exportDataService;
+        this.exportDataMapper = exportDataMapper;
+    }
 
     @GetMapping(value = {"/", "/index.html"})
     public String landingPage(ModelMap model) throws HHExportException {

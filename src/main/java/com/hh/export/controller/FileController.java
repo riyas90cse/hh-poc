@@ -24,12 +24,16 @@ import java.io.IOException;
 public class FileController {
 
     private final Logger LOG = LogManager.getLogger(this.getClass());
+    private final ExportDataService exportDataService;
+    private final HHExportPDFBuilder hhExportPDFBuilder;
 
-    @Autowired
-    private ExportDataService exportDataService;
-
-    @Autowired
-    private HHExportPDFBuilder hhExportPDFBuilder;
+    public FileController(
+            @Autowired ExportDataService exportDataService,
+            @Autowired HHExportPDFBuilder hhExportPDFBuilder
+            ) {
+        this.exportDataService = exportDataService;
+        this.hhExportPDFBuilder = hhExportPDFBuilder;
+    }
 
     @GetMapping(value = "/prepare/{id}/pdf.html")
     public void preparePDF(HttpServletResponse response, @PathVariable Long id) throws HHExportException {
